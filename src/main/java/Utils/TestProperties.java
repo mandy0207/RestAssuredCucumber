@@ -14,5 +14,6 @@ public class TestProperties {
 		FileInputStream fis = new FileInputStream(Constants.PROPERTIESFILEPATH);
 		prop.load(fis);
 		return prop;
+		
 	}
 }

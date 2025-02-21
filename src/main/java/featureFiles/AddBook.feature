@@ -1,17 +1,18 @@
-Feature: Verify User Login Test Cases
+Feature: Verify Add Book
 
 @Smoke
-Scenario: verify user login with correct creds
+Scenario: verify user is able to add single Book
 Given library api is available
 When user sends post request to add book with unique creds
-Then the status code  should be "200"
+Then the status code should be "200"
 And response should contain message "successfully added"
 
-@Reg
+
+@Smoke
 Scenario Outline: Verify Book Addition using Data Parameterisation
 Given library api is available
 When user sends post request to add book with "<bookName>" "<isbn>" "<aisle>" "<author>"
-Then the status code  should be "200"
+Then the status code should be "200"
 And response should contain message "successfully added"
  Examples:
         |  bookName             |   isbn          |     aisle     | author     |
