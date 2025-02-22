@@ -1,6 +1,7 @@
 Feature: Verify Delete Book API
 
 
+@Sanity
 Scenario Outline: Verify user is able to delete book using ID
 Given library baseURL is available
 When user sends post request to add book with unique creds
