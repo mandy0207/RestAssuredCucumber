@@ -3,7 +3,7 @@ Feature: Verify Get Book
 
 @Smoke
 Scenario Outline: Verify user is able to retrive book using ID
-Given library api is available
+Given library baseURL is available
 When user sends post request to add book with unique creds
 Then user sends get request to grab book using ID
 Then the status code should be "200"

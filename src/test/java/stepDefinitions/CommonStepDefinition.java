@@ -16,8 +16,8 @@ public class CommonStepDefinition {
 	}
 	
 	
-	@Given("library api is available")
-	public void library_api_is_available() {
+	@Given("library baseURL is available")
+	public void library_baseURL_is_available() {
 		String baseUrl = ApiResources.libraryBaseUrl.getResource();
 		scenarioContext.setbaseUrl(baseUrl);
 	}

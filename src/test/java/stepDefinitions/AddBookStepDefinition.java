@@ -15,6 +15,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import payloads.PayLoad;
+import pojo.Book;
 import specBuilders.Specs;
 
 public class AddBookStepDefinition {
@@ -30,9 +31,10 @@ public class AddBookStepDefinition {
 	
 	@When("user sends post request to add book with unique creds")
 	public void user_sends_post_request_to_add_book_with_unique_creds() {
-
-		req = given().spec(Specs.makeRequestSpec(scenarioContext.getbaseUrl())).body(PayLoad.getAddBookPayLoad(
-				UniqueGenerators.getUniqueString(), Integer.toString(UniqueGenerators.getRandomNumber())));
+		//Serializing Payload
+		Book book = new Book("Automation Learning", UniqueGenerators.getUniqueString(), Integer.toString(UniqueGenerators.getRandomNumber()), "Vinod");
+		
+		req = given().spec(Specs.makeRequestSpec(scenarioContext.getbaseUrl())).body(book);
 		res = req.when().post(ApiResources.postBook.getResource()).then().log().all().extract().response();
 		
 		scenarioContext.setResponse(res);
@@ -56,7 +58,7 @@ public class AddBookStepDefinition {
 
 	@Then("response should contain message {string}")
 	public void response_should_contain_message(String expectedMsg) {
-		JsonPath js = ParseJson.getJsonPathObject(res.asString());
+		JsonPath js = ParseJson.getJsonPathObject(scenarioContext.getResponse().asString());
 		String actualMsg = js.getString("Msg");
 
 		Assert.assertEquals(actualMsg, expectedMsg);

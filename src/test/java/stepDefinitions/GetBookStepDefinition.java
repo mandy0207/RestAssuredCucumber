@@ -9,7 +9,6 @@ import org.testng.Assert;
 
 import Utils.ParseJson;
 import Utils.ScenarioContext;
-import Utils.TestProperties;
 import enums.ApiResources;
 import io.cucumber.java.en.Then;
 import io.restassured.path.json.JsonPath;
